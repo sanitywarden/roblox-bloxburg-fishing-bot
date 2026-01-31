@@ -84,8 +84,6 @@ def get_screen_size():
 
 def get_key_code(key):
     key = key.upper()
-    
-    print(key)
 
     # Key codes that are important for us
     mac_codes = { 'Q': 12, 'P': 35 }
@@ -106,7 +104,7 @@ def is_key_pressed(key_name):
         return keyboard.is_pressed(key_name)
 
     elif os() == "Darwin":
-        return Quartz.CGEventSourceKeyState(Quartz.kCGEventSourceStateCombinedSessionState, get_key_code(key_name))
+        return CG.CGEventSourceKeyState(CG.kCGEventSourceStateCombinedSessionState, get_key_code(key_name))
 
     return False
 
@@ -126,8 +124,9 @@ def use_rod():
     elif os() == "Darwin":
         ENTER_CODE = 36
 
-        push = CG.CGEventCreateKeyboardEvent(None, ENTER_CODE, True)
-        release = CG.CGEventCreateKeyboardEvent(None, ENTER_CODE, False)
+        src = CG.CGEventSourceCreate(CG.kCGEventSourceStateHIDSystemState)
+        push = CG.CGEventCreateKeyboardEvent(src, ENTER_CODE, True)
+        release = CG.CGEventCreateKeyboardEvent(src, ENTER_CODE, False)
         CG.CGEventPost(CG.kCGHIDEventTap, push)
         time.sleep(random.uniform(catch_fish_click_min_s, catch_fish_click_max_s))
         CG.CGEventPost(CG.kCGHIDEventTap, release)
@@ -200,7 +199,7 @@ while True:
 
         with mss.mss() as screenshot:
             image = np.array(screenshot.grab(search_area))
-            cv2.imshow("Place the hook in the middle", image)
+            cv2.imshow("Place the hook in the image", image)
 
             # Create nice day/night vision eyes of the bot 
             hls = cv2.cvtColor(image, cv2.COLOR_BGR2HLS)
@@ -210,23 +209,30 @@ while True:
             
             # Blur it to increase the change of detecting the floating bob 
             blur = cv2.GaussianBlur(light, (5, 5), 0)
+            canny = blur
 
-            # Clean up the image a bit
-            kernel = np.ones((5, 5), np.uint8)
-            cleaned = cv2.morphologyEx(blur, cv2.MORPH_OPEN, kernel)
+            if os() == "Windows":
+                # Clean up the image a bit
+                # This removes the fishing rod line and stray pixels
+                kernel = np.ones((5, 5), np.uint8)
+                cleaned = cv2.morphologyEx(blur, cv2.MORPH_OPEN, kernel)
+                canny = cv2.Canny(cleaned, 225, 255)
 
-            # Edge detector 
-            canny = cv2.Canny(cleaned, 245, 255)
+            elif os() ==  "Darwin":
+                # Something breaks with macOS and we can't really further process the screenshot
+                # without losing valuable pixels of the hook
+                # so we just do the detection on the blur
+                canny = cv2.Canny(blur, 225, 255)
 
             if debug_mode:
-                cv2.imshow("Canny", canny)
+                cv2.imshow("What the bot sees", canny)
 
             # If the image is dark on average,
             # then the float is probably under water
             # which means that a fish is caught
             average_brightness = np.mean(canny)
 
-            if is_fishing and average_brightness == 0:                    
+            if not paused_script and is_fishing and average_brightness == 0:                    
                 if not paused_script:
                     is_fishing = False
                     use_rod()

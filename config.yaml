@@ -57,22 +57,22 @@ start_script_countdown_s: 5
 # Bot looks for the hook in this window
 # This field shouldn't be changed most of the time
 # DEFAULT 0.5
-align_window_top: 0.5
+align_window_top: 0.4
 
 # Preview window left offset
 # Bot looks for the hook in this window
 # This field shouldn't be changed most of the time
 # DEFAULT 0.6
-align_window_left: 0.6
+align_window_left: 0.75
 
 # Preview window width
 # Bot looks for the hook in this window
 # This field shouldn't be changed most of the time
 # DEFAULT 0.15
-align_window_width: 0.15
+align_window_width: 0.25
 
 # Preview window height
 # Bot looks for the hook in this window
 # This field shouldn't be changed most of the time
 # DEFAULT 0.3
-align_window_height: 0.3
+align_window_height: 0.4

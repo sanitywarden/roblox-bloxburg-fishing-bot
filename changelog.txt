@@ -1,2 +1,5 @@
 1.0.0
 Made a working automated bot/script for fishing job in the Bloxburg Roblox game.
+
+1.0.1
+Added support for macOS within the same script
