@@ -1,0 +1,78 @@
+# +================================================================================
+# | Roblox Bloxburg Fishing Bot by Vivit configuration file
+# |
+# | The Roblox bot reads some of it's settings from this file
+# | You can change safely edit the properties in this file
+# |
+# | Lines starting with '#' are comments and you can 
+# | safely add/remove them if you wish so
+# | DON'T remove lines that are not comments
+# |
+# | If you encounter any problems with the bot after changing this file
+# | exit the script and restore defaults in this file
+# | Default values are marked as 'DEFAULT x' where x is the default value
+# |
+# | In case you have any other problems with the bot - contact it's developer
+# |
+# | Happy fishing!
+# +================================================================================
+
+# Debug mode for the developer
+# This should be turned off most of the time
+# DEFAULT 0
+debug_mode: 0
+
+# Press and hold this key to quit the script
+# Examples of other possible hotkeys:
+# - Letters: 'a' 'q' 'x'
+# DEFAULT 'q'
+quit_script_hotkey: 'q'
+
+# NOTE: Script can only be paused/unpaused when not actively fishing
+# Press and hold this key to pause the script
+# Examples of other possible hotkeys:
+# - Letters: 'a' 'q' 'x'
+# DEFAULT 'p'
+pause_script_hotkey: 'p'
+
+# While fishing the click time is random to obfuscate the player being a bot
+# Click time is between in range [fishing_minigame_click_min_s, fishing_minigame_click_max_s]
+# This field sets the minimum of the click time range in seconds
+# DEFAUT 0.225
+catch_fish_click_min_s: 0.235
+
+# While fishing the click time is random to obfuscate the player being a bot
+# Click time is between in range [fishing_minigame_click_min_s, fishing_minigame_click_max_s]
+# This field sets the maximum of the click time range in seconds
+# DEFAULT 0.25
+catch_fish_click_max_s: 0.25
+
+# How much time is the user given to prepare
+# after starting the Roblox bloxburg fishing script 
+# This field sets the preparation time in seconds
+# DEFAULT 5
+start_script_countdown_s: 5
+
+# Preview window top offset
+# Bot looks for the hook in this window
+# This field shouldn't be changed most of the time
+# DEFAULT 0.5
+align_window_top: 0.5
+
+# Preview window left offset
+# Bot looks for the hook in this window
+# This field shouldn't be changed most of the time
+# DEFAULT 0.6
+align_window_left: 0.6
+
+# Preview window width
+# Bot looks for the hook in this window
+# This field shouldn't be changed most of the time
+# DEFAULT 0.15
+align_window_width: 0.15
+
+# Preview window height
+# Bot looks for the hook in this window
+# This field shouldn't be changed most of the time
+# DEFAULT 0.3
+align_window_height: 0.3

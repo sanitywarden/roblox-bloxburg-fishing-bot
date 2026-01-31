@@ -1,0 +1,6 @@
+opencv-python
+numpy
+mss
+pyyaml
+pyautogui
+pyobjc-framework-Quartz

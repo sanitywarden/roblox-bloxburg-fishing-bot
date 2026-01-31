@@ -1,0 +1,2 @@
+1.0.0
+Made a working automated bot/script for fishing job in the Bloxburg Roblox game.
