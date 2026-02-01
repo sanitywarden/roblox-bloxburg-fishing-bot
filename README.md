@@ -1,7 +1,7 @@
 #### README in other languages
 [Polski](https://github.com/sanitywarden/roblox-bloxburg-fishing-bot/blob/main/pl_README.md#readme)
 
-# roblox-bloxburg-fishint-bot
+# roblox-bloxburg-fishing-bot
 This is the repository for a simple Windows/MacOS Python bot/script which automates the fishing job in a Roblox game called Bloxburg.
 
 >This is a project developed out of my own curiosity and for educational purposes only. Using bots and/or automation scripts makes the experience worse for the gaming community and should be avoided.

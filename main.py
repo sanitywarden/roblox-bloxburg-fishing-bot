@@ -1,6 +1,5 @@
 import random
 import time
-import keyboard
 import cv2
 import numpy
 import mss
@@ -22,6 +21,7 @@ if os() == "Windows":
     import win32api
     import win32con
     import ctypes
+    import keyboard
 
 # macOS clicking is done with native Quartz framework
 elif os() == "Darwin":
