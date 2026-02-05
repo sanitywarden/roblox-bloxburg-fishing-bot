@@ -140,7 +140,7 @@ def print_with_time_debug(message):
         print_with_time(f"[debug] {message}")
 
 is_fishing = False
-paused_script = False
+paused_script = True
 
 width, height = get_screen_size()
 search_area = { 
