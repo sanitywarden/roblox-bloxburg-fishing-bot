@@ -140,7 +140,7 @@ def print_with_time_debug(message):
         print_with_time(f"[debug] {message}")
 
 is_fishing = False
-paused_script = True
+paused_script = False
 
 width, height = get_screen_size()
 search_area = { 
@@ -223,9 +223,6 @@ while True:
                 # without losing valuable pixels of the hook
                 # so we just do the detection on the blur
                 canny = cv2.Canny(blur, 225, 255)
-
-            if debug_mode:
-                cv2.imshow("What the bot sees", canny)
 
             # If the image is dark on average,
             # then the float is probably under water
